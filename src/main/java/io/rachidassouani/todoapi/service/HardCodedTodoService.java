@@ -29,7 +29,7 @@ public class HardCodedTodoService {
         return todosByUsername;
     }
 
-    public Todo deleteTodo(long todoId) {
+    public Todo deleteTodoById(long todoId) {
         Todo todo = findTodoById(todoId);
         if (todo != null) {
             todos.remove(todo);

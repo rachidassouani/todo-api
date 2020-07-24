@@ -28,4 +28,22 @@ public class HardCodedTodoService {
         }
         return todosByUsername;
     }
+
+    public Todo deleteTodo(long todoId) {
+        Todo todo = findTodoById(todoId);
+        if (todo != null) {
+            todos.remove(todo);
+            return todo;
+        }
+        return null;
+    }
+
+    private Todo findTodoById(long id) {
+        for (Todo t: todos) {
+            if (t.getId() == id) {
+                return t;
+            }
+        }
+        return null;
+    }
 }

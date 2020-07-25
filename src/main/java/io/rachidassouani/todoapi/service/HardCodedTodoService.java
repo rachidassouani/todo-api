@@ -51,7 +51,7 @@ public class HardCodedTodoService {
         return null;
     }
     public Todo saveOrUpdateTodo(Todo todo) {
-        if (todo.getId() == -1) {
+        if (todo.getId() == null || todo.getId() == -1 || todo.getId() == 0) {
             // saveTodo
             todo.setId(++idCounter);
         } else {

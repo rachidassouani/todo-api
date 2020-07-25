@@ -16,6 +16,10 @@ public class HardCodedTodoService {
     static {
         todos.add(new Todo(++idCounter, "learn Java", "rachid", new Date(), true));
         todos.add(new Todo(++idCounter, "learn JavaScript", "rachid", new Date(), true));
+        todos.add(new Todo(++idCounter, "learn JavaScript", "rachid", new Date(), true));
+        todos.add(new Todo(++idCounter, "learn JavaScript", "rachid", new Date(), true));
+        todos.add(new Todo(++idCounter, "learn JavaScript", "rachid", new Date(), true));
+        todos.add(new Todo(++idCounter, "learn JavaScript", "rachid", new Date(), true));
         todos.add(new Todo(++idCounter, "learn Angular", "rachida", new Date(), false));
     }
 
@@ -38,12 +42,23 @@ public class HardCodedTodoService {
         return null;
     }
 
-    private Todo findTodoById(long id) {
+    public Todo findTodoById(long id) {
         for (Todo t: todos) {
             if (t.getId() == id) {
                 return t;
             }
         }
         return null;
+    }
+    public Todo saveOrUpdateTodo(Todo todo) {
+        if (todo.getId() == -1) {
+            // saveTodo
+            todo.setId(++idCounter);
+        } else {
+            // updateTodo
+            deleteTodoById(todo.getId());
+        }
+        todos.add(todo);
+        return todo;
     }
 }
